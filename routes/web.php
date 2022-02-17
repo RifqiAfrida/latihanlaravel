@@ -2,11 +2,13 @@
 
 
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Category;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-
-use App\Models\Category;
-use App\Models\User;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 Route::get('/home', function () {
     return view ('home', [
@@ -53,3 +55,7 @@ Route::get('/authors/{author:username}', function(User $author){
         'posts' => $author->posts->load('category', 'author'),
     ]);
 });
+
+
+Route::get('/login', [LoginController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index']);

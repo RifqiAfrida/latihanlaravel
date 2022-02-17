@@ -39,4 +39,12 @@ class PostController extends Controller
             "post" => $post
         ]);
     }
+
+    // public function insertData(Request $req, $id)
+    // {
+    // $faker = Faker::create();
+    // $hasil = Post::fin($id);
+    // $user = new Comment();
+    // $user->name = $req->name;
+    // }
 }
