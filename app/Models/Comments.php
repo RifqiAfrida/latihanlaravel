@@ -9,6 +9,4 @@ class Comments extends Model
 {
     use HasFactory;
 
-    protected $table = 'comments';
-    public $timestamps = false;
 }
