@@ -18,17 +18,40 @@
           <li class="nav-item">
             <a class="nav-link {{ ($active === "categories") ? 'active' : "" }}" href="/categories">Categories</a>
           </li>
+        
+        @auth
+        
+          <li><a class="dropdown-item" href="#"><i class="bi bi-book"></i>Dashboard</a></li>
+          <form action="logout" method="post">
+            @csrf
+            <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>Logout</button>
+          </form>
+        
+          @endauth
         </ul>
-        <ul class="navbar-nav ms-auto">
+<ul class="navbar-nav ms-auto">
+        @auth
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-bell-fill"></i>
+            Welcome Back, {{ auth()->user()->name }}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+          </ul>
+        </li>
+        @else
           <li class="nav-item">
-            <a href="/login" class="nav-link {{ ($active === "login") ? 'active' : "" }}"><i class="bi bi-box-arrow-in-right"></i>
-              Login</a>
+            <a href="/login" class="nav-link {{ ($active === "login") ? 'active' : "" }}
+            "><i class="bi bi-box-arrow-in-left"></i>Login</a>
           </li>
-        </ul>
-        <form class="d-flex">
+      @endauth
+    </ul>
+        {{-- <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form> --}}
       </div>
     </div>
   </nav>
