@@ -6,8 +6,8 @@
       </div>
 
       @if(session()->has('success'))
-    <div class="alert alert-success" role="alert">
-      {{ session('succes') }}
+    <div class="alert alert-success col-lg-8" role="alert">
+      {{ session('success') }}
     </div>
       @endif
 
@@ -16,10 +16,10 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">Id</th>
               <th scope="col">Title</th>
               <th scope="col">Category</th>
-              <th scope="col">Actiom</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -32,12 +32,17 @@
                   <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info">
                       <span>View</span>
                   </a>
-                  <a href="" class="badge bg-warning">
+                  <a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-warning">
                       <span>Edit</span>
                   </a>
-                  <a href="" class="badge bg-danger">
+
+                  <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                  @method('delete')
+                  @csrf
+                  <button class="badge bg-danger border-0" onclick="return confirm('Apakah anda akan menghapus data ini?')">
                       <span>Delete</span>
-                  </a>
+                  </button>
+                  </form>
               </td>
             </tr>
             @endforeach

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Rifqi</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +21,7 @@
         
         @auth
         
-          <li><a class="dropdown-item" href="#"><i class="bi bi-book"></i>Dashboard</a></li>
+          <li><a class="dropdown-item" href="/dashboard/posts"><i class="bi bi-book"></i>Dashboard</a></li>
           <form action="logout" method="post">
             @csrf
             <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>Logout</button>

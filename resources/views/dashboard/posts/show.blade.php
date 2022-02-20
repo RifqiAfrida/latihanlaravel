@@ -8,8 +8,15 @@
                 <h1 class="mb-3">{{ $post->title }}</h1>
 
                 <a href="/dashboard/posts" class="btn btn-success">Bact To All My Posts</a>
-                <a href="" class="btn btn-warning">Edit This Post</a>
-                <a href="" class="btn btn-danger">Delete This Post</a>
+                <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning">Edit This Post</a>
+
+                    <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                  @method('delete')
+                  @csrf
+                  <button class="btn btn-danger border-0" onclick="return confirm('Apakah anda akan menghapus data ini?')">
+                      <span>Delete</span>
+                  </button>
+                  </form> 
 
         <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" 
         alt="{{ $post->category->name }}" class="img-fluid mt-3">
