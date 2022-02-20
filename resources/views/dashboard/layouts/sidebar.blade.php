@@ -13,6 +13,12 @@
               Posts
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('layouts') ? 'active' : "" }}" href="/home" href="/dashboard/posts">
+              <span data-feather="file"></span>
+              Home
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

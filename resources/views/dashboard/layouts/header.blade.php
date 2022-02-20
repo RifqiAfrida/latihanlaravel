@@ -7,10 +7,17 @@
   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <form action="logout" method="post">
+              @auth
+          <form action="logout" method="post">
             @csrf
             <button type="submit" class="nav-link px-3 bg-dark border-0"><span data-feather="logout"></span>Logout</button>
           </form>
+        
+          @endauth
+      {{-- <form action="logout" method="post">
+            @csrf
+            <button type="submit" class="nav-link px-3 bg-dark border-0"><span data-feather="logout"></span>Logout</button>
+          </form> --}}
     </div>
   </div>
 </header>
