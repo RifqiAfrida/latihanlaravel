@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\DashboardPostController;
 
 Route::get('/home', function () {
@@ -57,7 +58,6 @@ Route::get('/authors/{author:username}', function(User $author){
     ]);
 });
 
-
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
@@ -69,7 +69,9 @@ Route::get('/dashboard', function() {
     return view('dashboard.index');
 })->middleware('auth');
 
-
 Route::get('/dashbboard/posts/checkSlug', [DashboardPostController::class, 'checkslug']);
 Route::resource('/dashboard/posts', DashboardPostController::class)
 ->middleware('auth');
+
+Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')
+->middleware('admin');
